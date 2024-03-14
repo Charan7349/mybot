@@ -3,7 +3,11 @@ import os
 from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
+<<<<<<< HEAD
 from launch.substitutions import LaunchConfiguration, Command
+=======
+from launch.substitutions import LaunchConfiguration
+>>>>>>> dfb57b5fe86ddc15def1e397997213462532adf7
 from launch.actions import DeclareLaunchArgument
 from launch_ros.actions import Node
 
@@ -14,16 +18,26 @@ def generate_launch_description():
 
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
+<<<<<<< HEAD
     use_ros2_control = LaunchConfiguration('use_ros2_control')
+=======
+>>>>>>> dfb57b5fe86ddc15def1e397997213462532adf7
 
     # Process the URDF file
     pkg_path = os.path.join(get_package_share_directory('mybot'))
     xacro_file = os.path.join(pkg_path,'description','robot.urdf.xacro')
+<<<<<<< HEAD
     # robot_description_config = xacro.process_file(xacro_file).toxml()
     robot_description_config = Command(['xacro ', xacro_file, ' use_ros2_control:=', use_ros2_control])
     
     # Create a robot_state_publisher node
     params = {'robot_description': robot_description_config, 'use_sim_time': use_sim_time}
+=======
+    robot_description_config = xacro.process_file(xacro_file)
+    
+    # Create a robot_state_publisher node
+    params = {'robot_description': robot_description_config.toxml(), 'use_sim_time': use_sim_time}
+>>>>>>> dfb57b5fe86ddc15def1e397997213462532adf7
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
@@ -38,6 +52,7 @@ def generate_launch_description():
             'use_sim_time',
             default_value='false',
             description='Use sim time if true'),
+<<<<<<< HEAD
         DeclareLaunchArgument(
             'use_ros2_control',
             default_value='true',
@@ -45,3 +60,8 @@ def generate_launch_description():
 
         node_robot_state_publisher
     ])
+=======
+
+        node_robot_state_publisher
+    ])
+>>>>>>> dfb57b5fe86ddc15def1e397997213462532adf7

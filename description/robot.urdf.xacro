@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
+<<<<<<< HEAD
     <xacro:arg name="use_ros2_control" default="true"/>
 
     <xacro:include filename="robot_core.xacro" />
@@ -17,4 +18,9 @@
 
     
     
+=======
+    <!-- Example link -->
+    <link name="base_link"></link>
+
+>>>>>>> dfb57b5fe86ddc15def1e397997213462532adf7
 </robot>
